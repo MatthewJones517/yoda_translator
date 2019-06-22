@@ -17,6 +17,7 @@ class CustomScaffold extends StatelessWidget {
         backgroundColor: Colors.black,
       ),
       drawer: MenuDrawer(),
+      resizeToAvoidBottomPadding: false,
       body: child,
     );
   }
