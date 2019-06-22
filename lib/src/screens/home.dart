@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/menu_drawer.dart';
 
 class Home extends StatelessWidget {
   Widget build(context) {
@@ -10,6 +11,7 @@ class Home extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
+      drawer: MenuDrawer(),
       body: screenContent(context),
     );
   }
