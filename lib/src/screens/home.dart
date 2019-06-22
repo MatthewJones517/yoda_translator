@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           inputTextBox(),
+          outputTextBox(),
         ],
       ),
     );
@@ -63,6 +64,29 @@ class Home extends StatelessWidget {
       style: TextStyle(
         fontSize: 28,
         color: Color(0xff00d2ff),
+      ),
+    );
+  }
+
+  Widget outputTextBox() {
+    return Expanded(
+      flex: 6,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 3,
+            color: Color(0xfffffc00),
+          ),
+        ),
+        padding: EdgeInsets.all(15),
+        child: Text(
+          'In here, the output goes...',
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            color: Color(0xfffffc00),
+            fontSize: 28,
+          ),
+        ),
       ),
     );
   }
