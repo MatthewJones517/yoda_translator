@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
+import 'screens/settings.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
@@ -7,7 +8,42 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'TCG Counter',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      onGenerateRoute: routes,
     );
+  }
+
+  MaterialPageRoute screenRoute({String name, Widget child}) {
+    return MaterialPageRoute(
+      builder: (context) {
+        return child;
+      },
+      settings: RouteSettings(
+        name: name,
+      ),
+    );
+  }
+
+  Route routes(RouteSettings settings) {
+    switch (settings.name) {
+      case '/':
+        return screenRoute(
+          name: '/',
+          child: Home(),
+        );
+        break;
+
+      case '/settings':
+        return screenRoute(
+          name: '/settings',
+          child: Settings(),
+        );
+        break;
+
+      default:
+        return screenRoute(
+          name: '/',
+          child: Home(),
+        );
+    }
   }
 }
