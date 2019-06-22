@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/home.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
@@ -6,7 +7,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'TCG Counter',
       debugShowCheckedModeBanner: false,
-      home: Text('Hello From a Galaxy Far, Far Away!!!'),
+      home: Home(),
     );
   }
 }
