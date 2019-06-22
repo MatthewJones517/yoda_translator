@@ -15,6 +15,9 @@ class Home extends StatelessWidget {
   }
 
   Widget screenContent(BuildContext context) {
-    return Text('Hellow From a Galaxy Far, Far, Away!!!');
+    return Text(
+      'Hello From a Galaxy Far, Far, Away!!!',
+      style: TextStyle(fontSize: 32),
+    );
   }
 }
