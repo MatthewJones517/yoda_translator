@@ -10,9 +10,13 @@ class Home extends StatelessWidget {
   }
 
   Widget screenContent(BuildContext context) {
-    return Text(
-      'Hello From a Galaxy Far, Far, Away!!!',
-      style: TextStyle(fontSize: 32),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/background.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }
