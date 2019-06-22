@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'blocs/provider.dart';
 import 'screens/home.dart';
 import 'screens/settings.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
     // Main widget that provides basic functions needed for the app to run.
-    return MaterialApp(
-      title: 'TCG Counter',
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: routes,
+    return Provider(
+      child: MaterialApp(
+        title: 'TCG Counter',
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: routes,
+      ),
     );
   }
 
