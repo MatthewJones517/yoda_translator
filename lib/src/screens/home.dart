@@ -28,6 +28,7 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           inputTextBox(),
+          translateRow(),
           outputTextBox(),
         ],
       ),
@@ -87,6 +88,37 @@ class Home extends StatelessWidget {
             fontSize: 28,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget translateRow() {
+    return Padding(
+      padding: EdgeInsets.only(top: 15, bottom: 15),
+      child: Row(
+        children: <Widget>[
+          yoda(),
+          translateButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget yoda() {
+    return Expanded(
+      flex: 3,
+      child: Image.asset('assets/yoda.png'),
+    );
+  }
+
+  Widget translateButton() {
+    return Expanded(
+      flex: 7,
+      child: GestureDetector(
+        onTap: () {
+          print('Translate!');
+        },
+        child: Image.asset('assets/translate.png'),
       ),
     );
   }
