@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import '../widgets/menu_drawer.dart';
+import '../widgets/custom_scaffold.dart';
 
 class Home extends StatelessWidget {
   Widget build(context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Yoda Translator',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.black,
-      ),
-      drawer: MenuDrawer(),
-      body: screenContent(context),
+    return CustomScaffold(
+      appBarTitle: 'Yoda Translator',
+      child: screenContent(context),
     );
   }
 
