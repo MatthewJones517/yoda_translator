@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import '../blocs/provider.dart';
 import '../widgets/custom_scaffold.dart';
 
 class Home extends StatelessWidget {
   Widget build(context) {
+    final Bloc bloc = Provider.of(context);
+
     return CustomScaffold(
       appBarTitle: 'Yoda Translator',
-      child: screenContent(context),
+      child: screenContent(bloc),
     );
   }
 
-  Widget screenContent(BuildContext context) {
+  Widget screenContent(Bloc bloc) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -17,25 +20,25 @@ class Home extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: uiItems(),
+      child: uiItems(bloc),
     );
   }
 
-  Widget uiItems() {
+  Widget uiItems(Bloc bloc) {
     return Container(
       margin: EdgeInsets.all(25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          inputTextBox(),
-          translateRow(),
-          outputTextBox(),
+          inputTextBox(bloc),
+          translateRow(bloc),
+          outputTextBox(bloc),
         ],
       ),
     );
   }
 
-  Widget inputTextBox() {
+  Widget inputTextBox(Bloc bloc) {
     return Expanded(
       flex: 6,
       child: Container(
@@ -46,13 +49,14 @@ class Home extends StatelessWidget {
           ),
         ),
         padding: EdgeInsets.all(15),
-        child: inputTextField(),
+        child: inputTextField(bloc),
       ),
     );
   }
 
-  Widget inputTextField() {
+  Widget inputTextField(Bloc bloc) {
     return TextField(
+      onChanged: bloc.userInputSink,
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: 'Enter text to translate...',
@@ -69,7 +73,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget outputTextBox() {
+  Widget outputTextBox(Bloc bloc) {
     return Expanded(
       flex: 6,
       child: Container(
@@ -92,13 +96,13 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget translateRow() {
+  Widget translateRow(Bloc bloc) {
     return Padding(
       padding: EdgeInsets.only(top: 15, bottom: 15),
       child: Row(
         children: <Widget>[
           yoda(),
-          translateButton(),
+          translateButton(bloc),
         ],
       ),
     );
@@ -111,12 +115,12 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget translateButton() {
+  Widget translateButton(Bloc bloc) {
     return Expanded(
       flex: 7,
       child: GestureDetector(
         onTap: () {
-          print('Translate!');
+          bloc.translate();
         },
         child: Image.asset('assets/translate.png'),
       ),
