@@ -4,7 +4,7 @@ import '../resources/repository.dart';
 
 class Bloc {
   // Instantiate Repository
-  final Repository repository = Repository();
+  final Repository _repository = Repository();
 
   // Set up stream for translation text
   final BehaviorSubject<String> _userInput = BehaviorSubject<String>();
@@ -13,11 +13,10 @@ class Bloc {
   Observable<String> get userInput => _userInput.stream;
   Function(String) get userInputSink => _userInput.sink.add;
 
+
   void translate() async {
     final String input = _userInput.value;
-    print("Text to Translate: $input\n\n");
-    final TranslationModel translation = await repository.callAPI(input);
-    print("Translation: ${translation.translated}");
+    final TranslationModel translation = await _repository.callAPI(input);
   }
 
   dispose() {
