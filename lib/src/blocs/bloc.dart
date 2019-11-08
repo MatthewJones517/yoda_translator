@@ -16,7 +16,9 @@ class Bloc {
 
   void translate() async {
     final String input = _userInput.value;
+    print("Text to translate: $input\n\n");
     final TranslationModel translation = await _repository.callAPI(input);
+    print("Translation: ${translation.translated} \n\n");
   }
 
   dispose() {
