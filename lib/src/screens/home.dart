@@ -87,6 +87,10 @@ class Home extends StatelessWidget {
         child: StreamBuilder(
           stream: bloc.translationOutput,
           builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            if (snapshot.hasError) {
+              return loadingIndicator();
+            }
+
             if (!snapshot.hasData) {
               return outputText("In here, the output goes...");
             }
@@ -105,6 +109,14 @@ class Home extends StatelessWidget {
       style: TextStyle(
         color: Color(0xfffffc00),
         fontSize: 28,
+      ),
+    );
+  }
+
+  Widget loadingIndicator() {
+    return Center(
+      child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Color(0xfffffc00)),
       ),
     );
   }

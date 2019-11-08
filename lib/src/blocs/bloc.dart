@@ -20,6 +20,9 @@ class Bloc {
   // Translates user input
   void translate() async {
     final String input = _userInput.value;
+
+    _translationOutput.addError("Waiting...");
+
     final TranslationModel translation = await _repository.callAPI(input);
     _translationOutput.sink.add(translation.translated);
   }
