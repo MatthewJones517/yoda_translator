@@ -24,6 +24,7 @@ class Bloc {
     _translationOutput.sink.add(translation.translated);
   }
 
+  // Flutter requires that all streams be closed. 
   dispose() {
     _userInput.close();
     _translationOutput.close();
