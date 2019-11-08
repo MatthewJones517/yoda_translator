@@ -84,14 +84,27 @@ class Home extends StatelessWidget {
           ),
         ),
         padding: EdgeInsets.all(15),
-        child: Text(
-          'In here, the output goes...',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-            color: Color(0xfffffc00),
-            fontSize: 28,
-          ),
+        child: StreamBuilder(
+          stream: bloc.translationOutput,
+          builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            if (!snapshot.hasData) {
+              return outputText("In here, the output goes...");
+            }
+
+            return outputText(snapshot.data);
+          },
         ),
+      ),
+    );
+  }
+
+  Widget outputText(String text) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: Color(0xfffffc00),
+        fontSize: 28,
       ),
     );
   }
