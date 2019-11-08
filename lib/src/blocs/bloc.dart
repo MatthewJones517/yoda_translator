@@ -9,19 +9,23 @@ class Bloc {
   // Set up stream for translation text
   final BehaviorSubject<String> _userInput = BehaviorSubject<String>();
 
+  // Set up output stream
+  final BehaviorSubject<String> _translationOutput = BehaviorSubject<String>();
+
   // Set up stream getters
   Observable<String> get userInput => _userInput.stream;
   Function(String) get userInputSink => _userInput.sink.add;
+  Observable<String> get translationOutput => _translationOutput.stream;
 
-
+  // Translates user input
   void translate() async {
     final String input = _userInput.value;
-    print("Text to translate: $input\n\n");
     final TranslationModel translation = await _repository.callAPI(input);
-    print("Translation: ${translation.translated} \n\n");
+    _translationOutput.sink.add(translation.translated);
   }
 
   dispose() {
     _userInput.close();
+    _translationOutput.close();
   }
 }
