@@ -6,6 +6,12 @@
 
 The Yoda Translator app takes a normal English sentence and translates it into Yodish. It was written for a presentation at [Dayton Web Developers](https://www.meetup.com/dayton-web-developers/) to provide an overview of the [Flutter](https://flutter.dev/) framework.
 
+# What API did you use for the translations?
+https://rapidapi.com/orthosie/api/yoda-translator
+
+# How can I connect with you?
+I'm on [Twitter](https://twitter.com/MatthewJones517) and someday I hope to re-launch my [portfolio site](http://www.MatthewRJones.me).
+
 # Tell Me More About This Presentation!
 
 ## Title
@@ -25,9 +31,3 @@ The framework that you are looking for, this is! Come to this session to learn h
 
 ## Presentation Slides
 https://docs.google.com/presentation/d/1SnhrabpRd8TvGFZ_86k6BTtjxWDzMSmoHjtMytzmIy0/edit?usp=sharing
-
-# What API did you use for the translations?
-https://rapidapi.com/orthosie/api/yoda-translator
-
-# How can I connect with you?
-I'm on [Twitter](https://twitter.com/MatthewJones517) and someday I hope to re-launch my [portfolio site](http://www.MatthewRJones.me).
