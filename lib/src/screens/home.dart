@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           inputTextBox(),
+          translateRow(context),
           outputTextBox(context),
         ],
       ),
@@ -106,6 +107,32 @@ class _HomeState extends State<Home> {
         color: Color(0xfffffc00),
         fontSize: 28,
       ),
+    );
+  }
+
+  Widget translateRow(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 15, bottom: 15),
+      child: Row(
+        children: <Widget>[
+          yoda(),
+          translateButton(context),
+        ],
+      ),
+    );
+  }
+
+  Widget yoda() {
+    return Expanded(
+      flex: 3,
+      child: Image.asset('assets/yoda.png'),
+    );
+  }
+
+  Widget translateButton(BuildContext context) {
+    return Expanded(
+      flex: 7,
+      child: Image.asset('assets/translate.png'),
     );
   }
 }
