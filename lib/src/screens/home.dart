@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoda_translator/src/widgets/custom_scaffold.dart';
 import 'package:yoda_translator/src/widgets/menu_drawer.dart';
 
 class Home extends StatefulWidget {
@@ -9,17 +10,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Yoda Translator',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.black,
-      ),
-      drawer: MenuDrawer(),
-      resizeToAvoidBottomPadding: false,
-      body: Text('Home Screen'),
+    return CustomScaffold(
+      appBarTitle: "Yoda Translator",
+      child: Text("Home Screen"),
     );
   }
 }
