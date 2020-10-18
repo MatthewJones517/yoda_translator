@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoda_translator/src/screens/home.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
@@ -6,7 +7,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Yoda Translator',
       debugShowCheckedModeBanner: false,
-      home: Text('This is an app!'),
+      home: Home(),
     );
   }
 }
