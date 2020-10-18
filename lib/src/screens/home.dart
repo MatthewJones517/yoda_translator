@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoda_translator/src/widgets/menu_drawer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _HomeState extends State<Home> {
         ),
         backgroundColor: Colors.black,
       ),
+      drawer: MenuDrawer(),
       resizeToAvoidBottomPadding: false,
       body: Text('Home Screen'),
     );
