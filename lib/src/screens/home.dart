@@ -29,13 +29,14 @@ class _HomeState extends State<Home> {
     );
   }
 
-   Widget uiItems(BuildContext context) {
+  Widget uiItems(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           inputTextBox(),
+          outputTextBox(context),
         ],
       ),
     );
@@ -76,6 +77,34 @@ class _HomeState extends State<Home> {
       style: TextStyle(
         fontSize: 28,
         color: Color(0xff00d2ff),
+      ),
+    );
+  }
+
+  Widget outputTextBox(BuildContext context) {
+    return Expanded(
+      flex: 6,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 3,
+            color: Color(0xfffffc00),
+          ),
+        ),
+        padding: EdgeInsets.all(15),
+        // Todo - Fix output text content
+        child: outputText("In here, the translation goes"),
+      ),
+    );
+  }
+
+  Widget outputText(String text) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: Color(0xfffffc00),
+        fontSize: 28,
       ),
     );
   }
