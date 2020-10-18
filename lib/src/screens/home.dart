@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yoda_translator/src/widgets/custom_scaffold.dart';
-import 'package:yoda_translator/src/widgets/menu_drawer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,6 +7,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String _inputText = "";
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -24,7 +25,58 @@ class _HomeState extends State<Home> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Container(),
+      child: uiItems(context),
+    );
+  }
+
+   Widget uiItems(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          inputTextBox(),
+        ],
+      ),
+    );
+  }
+
+  Widget inputTextBox() {
+    return Expanded(
+      flex: 6,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 3,
+            color: Color(0xff00d2ff),
+          ),
+        ),
+        padding: EdgeInsets.all(15),
+        child: inputTextField(),
+      ),
+    );
+  }
+
+  Widget inputTextField() {
+    return TextField(
+      onChanged: (String newText) {
+        setState(() {
+          _inputText = newText;
+        });
+      },
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Enter text to translate',
+        hintStyle: TextStyle(
+          color: Color(0xff00d2ff),
+        ),
+      ),
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      style: TextStyle(
+        fontSize: 28,
+        color: Color(0xff00d2ff),
+      ),
     );
   }
 }
