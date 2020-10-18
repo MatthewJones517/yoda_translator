@@ -12,7 +12,19 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       appBarTitle: "Yoda Translator",
-      child: Text("Home Screen"),
+      child: screenContent(context),
+    );
+  }
+
+  Widget screenContent(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/background.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Container(),
     );
   }
 }
