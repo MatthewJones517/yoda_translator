@@ -9,7 +9,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String _inputText = "";
+  String _inputText;
+  bool _loading;
+
+  void initState() {
+    super.initState();
+    _inputText = "";
+    _loading = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,19 +95,25 @@ class _HomeState extends State<Home> {
     return Expanded(
       flex: 6,
       child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 3,
-            color: Color(0xfffffc00),
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 3,
+              color: Color(0xfffffc00),
+            ),
           ),
-        ),
-        padding: EdgeInsets.all(15),
-        child: Consumer<TranslatorService>(
-          builder: (context, translatorService, child) {
-            return outputText(translatorService.translationModel.translated);
-          },
-        ),
-      ),
+          padding: EdgeInsets.all(15),
+          child: Consumer<TranslatorService>(
+            builder: (context, translatorService, child) {
+              if (_loading == true &&
+                  translatorService.translationModel.translation == "") {
+                return loadingIndicator();
+              } else {
+                _loading = false;
+              }
+
+              return outputText(translatorService.translationModel.translated);
+            },
+          )),
     );
   }
 
@@ -141,6 +154,10 @@ class _HomeState extends State<Home> {
         builder: (context, translationService, child) => GestureDetector(
           onTap: () {
             translationService.translate(_inputText);
+
+            setState(() {
+              _loading = true; 
+            });
           },
           child: Image.asset('assets/translate.png'),
         ),
@@ -148,3 +165,11 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+Widget loadingIndicator() {
+    return Center(
+      child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Color(0xfffffc00)),
+      ),
+    );
+  }
