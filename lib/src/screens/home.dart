@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yoda_translator/src/widgets/custom_scaffold.dart';
+import 'package:provider/provider.dart';
+import 'package:yoda_translator/src/services/translator_service.dart';
+import '../widgets/custom_scaffold.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -93,8 +95,11 @@ class _HomeState extends State<Home> {
           ),
         ),
         padding: EdgeInsets.all(15),
-        // Todo - Fix output text content
-        child: outputText("In here, the translation goes"),
+        child: Consumer<TranslatorService>(
+          builder: (context, translatorService, child) {
+            return outputText(translatorService.translationModel.translated);
+          },
+        ),
       ),
     );
   }
@@ -132,7 +137,14 @@ class _HomeState extends State<Home> {
   Widget translateButton(BuildContext context) {
     return Expanded(
       flex: 7,
-      child: Image.asset('assets/translate.png'),
+      child: Consumer<TranslatorService>(
+        builder: (context, translationService, child) => GestureDetector(
+          onTap: () {
+            translationService.translate(_inputText);
+          },
+          child: Image.asset('assets/translate.png'),
+        ),
+      ),
     );
   }
 }
